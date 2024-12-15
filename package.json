@@ -1,0 +1,14 @@
+{
+  "name": "clickhouse-js-pg",
+  "version": "1.0.0",
+  "description": "A playground for Clickouse JS Client",
+  "main": "simple.js",
+  "scripts": {
+    "test": "node simple.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@clickhouse/client": "^1.9.1"
+  }
+}
