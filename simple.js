@@ -28,7 +28,7 @@ void (async () => {
   await client.command({
     query: `
       CREATE TABLE ${tableName}
-      (id UInt64, name String, timestamp DateTime64(3, 'UTC'))
+      (id UInt64, name String, timestamp DateTime64(3, 'UTC'), my_float Float64)
       ENGINE MergeTree()
       ORDER BY (id)
     `,
@@ -40,8 +40,8 @@ void (async () => {
     table: tableName,
     // structure should match the desired format, JSONEachRow in this example
     values: [
-      { id: 42, name: "foo", timestamp: new Date(ts * 1000) },
-      { id: 42, name: "bar", timestamp: new Date((ts + 1) * 1000) },
+      { id: 42, name: "foo", timestamp: new Date(ts * 1000), my_float: ts.toString() },
+      { id: 42, name: "bar", timestamp: new Date((ts + 1) * 1000), my_float: ts.toString() },
     ],
     clickhouse_settings: {
       // Allows to insert serialized JS Dates (such as '2023-12-06T10:54:48.000Z')
